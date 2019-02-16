@@ -1,0 +1,45 @@
+server:
+  port: 8880
+logging:
+  config: classpath:logback-spring.xml
+  path: /home/logs
+
+spring:
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/warehouse?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username : root
+      password : xda265856
+      driverClassName : com.mysql.jdbc.Driver
+  jpa:
+      hibernate:
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        ddl-auto: update
+      show-sql: true
+ # 模板配置
+  thymeleaf:
+      cache: false # 这个开发配置为false，避免改了模板还要重启服务器
+      prefix: classpath:/static/
+      suffix: .html              # 下面3个不做解释了，可以不配置
+      encoding: UTF-8
+      mode: LEGACYHTML5      # 模板的模式
+  mvc:
+    view:
+      prefix: classpath:/   # 定位模板的目录
+      suffix: .html     # 给返回的页面添加后缀名
+  mail:
+    host: smtp.163.com
+    username: xda265856@163.com
+    password: xda265856
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 25000
+          ssl.enable: true
+          socketFactory.class: javax.net.ssl.SSLSocketFactory
+          starttls.enable: true
+          socketFactory.port: 465　
+          port: 465
+

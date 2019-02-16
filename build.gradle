@@ -1,0 +1,74 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.3.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'org.virtue'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //springboot相关jar包
+    compile('org.springframework.boot:spring-boot-starter-web'){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    //excel&word相关jar包
+    compile group: 'org.apache.poi', name: 'poi', version: '3.15'
+    compile group: 'org.apache.poi', name: 'poi-excelant', version: '3.15'
+    compile group: 'org.apache.poi', name: 'poi-scratchpad', version: '3.15'
+    //log4j2jar包
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '1.5.6.RELEASE'
+    //数据库连接使用druid连接池
+    compile('org.springframework.boot:spring-boot-starter-data-jpa'){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    compile group: 'com.alibaba', name: 'druid', version: '1.0.29'
+    compile('mysql:mysql-connector-java:5.1.31')
+    //数据处理
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.41'
+    //模板引擎
+    compile ( 'org.springframework.boot:spring-boot-starter-thymeleaf'){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    //工具类
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
+    // [图片]https://mvnrepository.com/artifact/cn.afterturn/easypoi-base
+    compile group: 'cn.afterturn', name: 'easypoi-base', version: '3.0.3'
+
+// [图片]https://mvnrepository.com/artifact/cn.afterturn/easypoi-annotation
+    compile group: 'cn.afterturn', name: 'easypoi-annotation', version: '3.0.3'
+
+// [图片]https://mvnrepository.com/artifact/cn.afterturn/easypoi-web
+    compile group: 'cn.afterturn', name: 'easypoi-web', version: '3.0.3'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+//	compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '1.5.13.RELEASE'
+//	compile("org.springframework.boot:spring-boot-devtools")
+//	// https://mvnrepository.com/artifact/org.springframework.session/spring-session
+//	compile group: 'org.springframework.session', name: 'spring-session', version: '1.3.3.RELEASE'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.0'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.4'
+    //定时任务
+    // https://mvnrepository.com/artifact/org.quartz-scheduler/quartz
+    compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.2.1'
+    // https://mvnrepository.com/artifact/org.springframework/spring-context-support
+    compile group: 'org.springframework', name: 'spring-context-support', version: '4.3.18.RELEASE'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
+    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '1.5.9.RELEASE'){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    // https://mvnrepository.com/artifact/org.springframework/spring-tx
+    compile group: 'org.springframework', name: 'spring-tx', version: '4.3.18.RELEASE'
+
+    compileOnly 'org.projectlombok:lombok'
+}
