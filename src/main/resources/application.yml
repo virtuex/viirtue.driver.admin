@@ -2,12 +2,12 @@ server:
   port: 8880
 logging:
   config: classpath:logback-spring.xml
-  path: /home/logs
+  path: logs
 
 spring:
   datasource:
       type: com.alibaba.druid.pool.DruidDataSource
-      url: jdbc:mysql://127.0.0.1:3306/warehouse?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      url: jdbc:mysql://127.0.0.1:3306/driver_book?useUnicode=true&characterEncoding=utf-8&useSSL=true
       username : root
       password : xda265856
       driverClassName : com.mysql.jdbc.Driver
@@ -42,4 +42,6 @@ spring:
           starttls.enable: true
           socketFactory.port: 465　
           port: 465
-
+mybatis:
+  type-aliases-package: org.spring.springboot.domain
+  mapper-locations: classpath:mapper/*.xml

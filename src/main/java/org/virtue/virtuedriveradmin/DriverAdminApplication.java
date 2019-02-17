@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class VirtueDriverAdminApplication {
+public class DriverAdminApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(VirtueDriverAdminApplication.class, args);
+        SpringApplication.run(DriverAdminApplication.class, args);
     }
 
 }
