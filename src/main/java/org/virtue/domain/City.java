@@ -1,10 +1,15 @@
 package org.virtue.domain;
 
+import org.springframework.stereotype.Component;
+
+
+
 /**
  * 城市实体类
  *
  * Created by bysocket on 07/02/2017.
  */
+@Component
 public class City {
 
     /**

@@ -22,4 +22,10 @@ public class CityRestController {
         return cityService.findCityByName(cityName);
     }
 
+    @RequestMapping(value = "/city", method = RequestMethod.GET)
+    public String findOneCity() {
+        System.out.println("Test");
+        return "test";
+    }
+
 }

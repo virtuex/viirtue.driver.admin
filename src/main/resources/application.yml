@@ -1,7 +1,7 @@
 server:
   port: 8880
 logging:
-  config: classpath:logback-spring.xml
+  config: classpath:log4j.xml
   path: logs
 
 spring:

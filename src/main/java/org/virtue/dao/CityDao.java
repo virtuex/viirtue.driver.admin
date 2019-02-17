@@ -1,6 +1,7 @@
 package org.virtue.dao;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 import org.virtue.domain.City;
 
 /**
@@ -8,6 +9,7 @@ import org.virtue.domain.City;
  *
  * Created by bysocket on 07/02/2017.
  */
+@Repository
 public interface CityDao {
 
     /**

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.spring.springboot.dao.CityDao">
-	<resultMap id="BaseResultMap" type="org.spring.springboot.domain.City">
+<mapper namespace="org.virtue.dao.CityDao">
+	<resultMap id="BaseResultMap" type="org.virtue.domain.City">
 		<result column="id" property="id" />
-		<result column="province_id" property="provinceId" />
-		<result column="city_name" property="cityName" />
+		<result column="provinceId" property="provinceId" />
+		<result column="cityName" property="cityName" />
 		<result column="description" property="description" />
 	</resultMap>
 
-	<parameterMap id="City" type="org.spring.springboot.domain.City"/>
+	<parameterMap id="City" type="org.virtue.domain.City"/>
 
 	<sql id="Base_Column_List">
-		id, province_id, city_name, description
+		id, provinceId, cityName, description
 	</sql>
 
 	<select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.String">
 		select
 		<include refid="Base_Column_List" />
 		from city
-		where city_name = #{cityName}
+		where cityName = #{cityName}
 	</select>
 
 </mapper>
