@@ -1,5 +1,6 @@
 package org.virtue.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +12,7 @@ import org.virtue.service.CityService;
 /**
  * Created by bysocket on 07/02/2017.
  */
+@Api("测试接口")
 @RestController
 public class CityRestController {
 
