@@ -17,7 +17,7 @@ monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本�
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
         </Console>
         <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用-->
-        <File name="filelog" fileName="/home/log/test1.log" append="true" filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
+        <File name="filelog" fileName="log/test1.log" append="true" filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
         </File>
         <!-- 这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
@@ -42,12 +42,12 @@ monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本�
 
 
         <!--这个logger的name-->
-        <logger name="com.pro.warehouse" level="INFO" additivity="false">
+        <logger name="org.virtue" level="DEBUG" additivity="false">
             <appender-ref ref="RollingFile"/>
         </logger>
 
         <!--这个logger的name-->
-        <logger name="com.pro.warehouse" level="INFO" additivity="false">
+        <logger name="org.virtue" level="DEBUG" additivity="false">
             <appender-ref ref="Console"/>
         </logger>
 
