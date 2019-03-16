@@ -266,7 +266,7 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        <button class="btn btn-block btn-success btn-sm" href="#modal-table" type="button" data-toggle="modal">修改
+        <button class="btn btn-block btn-success btn-sm" href="#modal-table" type="button" data-toggle="modal">新增题目
         </button>
         <!-- Main content -->
         <section class="content">
@@ -510,10 +510,11 @@
                 <div class="modal-content">
                     <div class="card card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">题目详情</h3>
+                            <h3 class="card-title">题目更新</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
+                        <input  type="hidden" name="itemBankId" id="itemBankId3"  class="form-control" placeholder="">
 
                         <div class="card-body">
                             <div class="form-group">
@@ -649,8 +650,8 @@
             // 初始化内容
             var url = 'http://127.0.0.1:8880/item/bank/list/1'
             var btn1 = '<button class="btn btn-block btn-info btn-sm" data-toggle="modal" href="#modal-detail-table" id="{0}" type="button" onclick="show_detail(this)">详情</button>'
-            var btn2 = '<button class="btn btn-block btn-success btn-sm" data-toggle="modal" href="#modal-update-table" onclick="update(this)"  id="{0}" type="button">修改</button>'
-            var btn3 = '<button class="btn btn-block btn-danger btn-sm" id="{0}" type="button">删除</button>'
+            var btn2 = '<button class="btn btn-block btn-success btn-sm" data-toggle="modal" href="#modal-update-table"   id="{0}" type="button" onclick="show_update(this)">修改</button>'
+            var btn3 = '<button class="btn btn-block btn-danger btn-sm" id="{0}" onclick="del_item(this)" type="button">删除</button>'
             $.ajax({
                 url: url,
                 data: {},
@@ -751,7 +752,7 @@
 
     }
 
-    function update(e) {
+    function show_update(e) {
 
         var message = $(e).attr("id");
 
@@ -761,7 +762,6 @@
         //    ajax异步请求数据
         var htmlobj=$.ajax({url:url,async:false});
         var data = htmlobj.responseText;
-
         $.getJSON(
             url,
             //处理数据 data指向的是返回来的JSON数据
@@ -770,6 +770,7 @@
 
                     //填充数据
                     //alert(ite.enterId);
+                    $("#itemBankId3").val(ite.itemBankId);
                     $("#itemBankSubject2").val(ite.itemBankSubject);
                     $("#itemBankChoiceA2").val(ite.itemBankChoiceA);
                     $("#itemBankChoiceB2").val(ite.itemBankChoiceB);
@@ -785,6 +786,28 @@
 
             }
         )
+
+    }
+
+    function del_item(e) {
+
+        var message = $(e).attr("id");
+
+        var url = "/item-delete?itemBankId="+message;
+        window.location.href=url;
+        // alert(message);
+        //
+        // //    ajax异步请求数据
+        // var htmlobj=$.ajax({url:url,async:false});
+        // var data = htmlobj.responseText;
+        //
+        // $.getJSON(
+        //     url,
+        //     //处理数据 data指向的是返回来的JSON数据
+        //     function(data){
+        //         alert(data.message);
+        //     }
+        // )
 
     }
 </script>

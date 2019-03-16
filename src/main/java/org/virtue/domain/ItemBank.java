@@ -1,8 +1,10 @@
 package org.virtue.domain;
 
 import lombok.Data;
+import org.omg.CORBA.OBJ_ADAPTER;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -32,6 +34,9 @@ public class ItemBank {
     @Column(name = "ITEM_BANK_ANSWER")
     private String itemBankAnswer;
 
+    @Column(name = "ITEM_BANK_ANSWER_ANALYSE")
+    private String itemBankAnswerAnalyse;
+
     @Column(name = "ITEM_BANK_KOWNLEDGE_TYPE")
     private int itemBankKownledgeType;
 
@@ -42,4 +47,25 @@ public class ItemBank {
     private int itemBankSubjectType;
 
 
+    @Override
+    public boolean equals(Object obj) {
+        return  this.itemBankId-((ItemBank)obj).itemBankId>0;
+    }
+
+    /**
+     * 重写hashcode 方法，返回的hashCode不一样才再去比较每个属性的值
+     */
+    @Override
+    public int hashCode() {
+        return Long.valueOf(itemBankId).hashCode();
+    }
+
+    public boolean isInList(List<ItemBank> banks){
+        for(ItemBank bank:banks){
+            if(this.itemBankId==bank.getItemBankId()){
+                return true;
+            }
+        }
+        return false;
+    }
 }

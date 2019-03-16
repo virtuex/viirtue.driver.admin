@@ -11,7 +11,7 @@ public class BizResult<T> {
         this.message = "成功";
         this.data = data;
     }
-    private BizResult() {
+    public BizResult() {
 
     }
     private BizResult(BasicException cm) {

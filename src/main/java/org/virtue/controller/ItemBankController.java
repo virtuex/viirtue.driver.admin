@@ -66,5 +66,11 @@ public class ItemBankController {
         return "/pages/charts/item_bank_list";
     }
 
+    @RequestMapping(value ="/item-delete",method = {RequestMethod.GET})
+    public String deleteItemBank(Long itemBankId){
+        itemBankRepository.deleteById(itemBankId);
+        return "/pages/charts/item_bank_list";
+    }
+
 
 }
