@@ -3,6 +3,7 @@ package org.virtue.controller;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.virtue.basic.result.BizResult;
 import org.virtue.config.ProConfig;
@@ -46,7 +47,7 @@ public class ItemBankController {
     }
 
     @RequestMapping(value = "/item-bank-add",method = {RequestMethod.GET})
-    public String addItemBank(ItemBank itemBank,HttpServletRequest request){
+    public String addItemBank(ItemBank itemBank, BindingResult bindingResult){
         ItemBank save = itemBankRepository.save(itemBank);
         log.debug("插入成功");
         return "/pages/charts/item_bank_list";
@@ -71,6 +72,9 @@ public class ItemBankController {
         itemBankRepository.deleteById(itemBankId);
         return "/pages/charts/item_bank_list";
     }
+
+
+
 
 
 }

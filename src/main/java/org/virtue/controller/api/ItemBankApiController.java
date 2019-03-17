@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.virtue.basic.result.BizResult;
+import org.virtue.bizexception.BizException;
 import org.virtue.cache.TokenCache;
 import org.virtue.config.ProConfig;
 import org.virtue.constant.ItemType;
@@ -165,11 +166,13 @@ public class ItemBankApiController {
         Set set = new HashSet();
         for(Grade grade:grades){
             String errorIds = grade.getErrorIds();
-            String substring = errorIds.substring(0, errorIds.length() - 1);
-            String[] split = substring.split("-");
-            for(String s:split){
-                if(Pattern.matches("^[1-9]\\d*$",s)){
-                    set.add(Long.valueOf(s));
+            if(errorIds.length()>1&&errorIds.contains("-")) {
+                String substring = errorIds.substring(0, errorIds.length() - 1);
+                String[] split = substring.split("-");
+                for (String s : split) {
+                    if (Pattern.matches("^[1-9]\\d*$", s)) {
+                        set.add(Long.valueOf(s));
+                    }
                 }
             }
 
@@ -240,11 +243,13 @@ public class ItemBankApiController {
         Set<Long> set = new HashSet();
         for(Grade grade:grades){
             String errorIds = grade.getErrorIds();
-            String substring = errorIds.substring(0, errorIds.length() - 1);
-            String[] split = substring.split("-");
-            for(String s:split){
-                if(Pattern.matches("^[1-9]\\d*$",s)){
-                    set.add(Long.valueOf(s));
+            if(errorIds.length()>1&&errorIds.contains("-")) {
+                String substring = errorIds.substring(0, errorIds.length() - 1);
+                String[] split = substring.split("-");
+                for (String s : split) {
+                    if (Pattern.matches("^[1-9]\\d*$", s)) {
+                        set.add(Long.valueOf(s));
+                    }
                 }
             }
         }
@@ -289,7 +294,7 @@ public class ItemBankApiController {
 
     @ResponseBody
     @RequestMapping(value = "/api/item/collect/remove",method = {RequestMethod.GET,RequestMethod.POST})
-    public BizResult removeMyCollect(String token,long itemId){
+    public BizResult removeMyCollect(String token,long questionid){
         if(null == TokenCache.tokens.get(token)){
             BizResult biz = new BizResult();
             biz.setMessage("会话已过期");
@@ -297,7 +302,16 @@ public class ItemBankApiController {
             return biz;
         }
         long userId = (long) TokenCache.tokens.get(token);
-        collectRepository.removeByUserIdAndItemBankId(userId,itemId);
+        List<MyCollect> byUserIdAndItemBankId = collectRepository.findByUserIdAndItemBankId(userId, questionid);
+        if(byUserIdAndItemBankId==null||byUserIdAndItemBankId.size()<1){
+           BizResult bizResult = new BizResult();
+           bizResult.setRetCode(-1);
+           bizResult.setMessage("服务端处理失败，请稍后再试");
+           return  bizResult;
+        }
+        MyCollect collect = byUserIdAndItemBankId.get(0);
+        long collectId = collect.getCollectId();
+        collectRepository.deleteById(collectId);
         BizResult myResult =new BizResult();
         myResult.setMessage("移除成功");
         myResult.setRetCode(200);

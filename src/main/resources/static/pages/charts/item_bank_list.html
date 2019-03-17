@@ -367,6 +367,11 @@
                                 <input type="text" name="itemBankChoiceD" id="itemBankChoiceD" class="form-control" placeholder="">
                             </div>
                             <div class="form-group">
+                                <label>图片地址</label>
+                                <textarea class="form-control" name="itemBankSubjectImageUrl" rows="3" id="itemBankSubjectImageUrl"
+                                          placeholder="Enter ..."></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label>正确答案</label>
                                 <select class="form-control" name="itemBankAnswer" id="itemBankAnswer">
                                     <option value="A">A</option>
@@ -374,6 +379,11 @@
                                     <option value="C">C</option>
                                     <option value="D">D</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label>答案解析</label>
+                                <textarea class="form-control" name="itemBankAnswerAnalyse" rows="3" id="itemBankAnswerAnalyse"
+                                          placeholder="Enter ..."></textarea>
                             </div>
                             <div class="form-group">
                                 <label>难易程度</label>
@@ -467,9 +477,19 @@
                                 <input type="text" name="itemBankChoiceD" id="itemBankChoiceD1" readonly="readonly" class="form-control" placeholder="">
                             </div>
                             <div class="form-group">
+                                <label>图片地址</label>
+                                <textarea class="form-control" name="itemBankSubjectImageUrl" rows="3" id="itemBankSubjectImageUrl1"
+                                          placeholder="Enter ..."></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label>正确答案</label>
                                 <input class="form-control" readonly="readonly" id="itemBankAnswer1" name="itemBankAnswer" >
                                 </input>
+                            </div>
+                            <div class="form-group">
+                                <label>答案解析</label>
+                                <textarea class="form-control" readonly="readonly" name="itemBankAnswerAnalyse" rows="3" id="itemBankAnswerAnalyse1"
+                                          placeholder="Enter ..."></textarea>
                             </div>
                             <div class="form-group">
                                 <label>难易程度</label>
@@ -547,6 +567,12 @@
                                 <input type="text" name="itemBankChoiceD" id="itemBankChoiceD2"  class="form-control" placeholder="">
                             </div>
                             <div class="form-group">
+                                <label>图片地址</label>
+                                <textarea class="form-control" name="itemBankSubjectImageUrl" rows="3" id="itemBankSubjectImageUrl2"
+                                          placeholder="Enter ..."></textarea>
+                            </div>
+
+                            <div class="form-group">
                                 <label>正确答案</label>
                                 <select class="form-control" name="itemBankAnswer" id="itemBankAnswer2">
                                     <option value="A">A</option>
@@ -554,6 +580,11 @@
                                     <option value="C">C</option>
                                     <option value="D">D</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label>答案解析</label>
+                                <textarea class="form-control"  name="itemBankAnswerAnalyse" rows="3" id="itemBankAnswerAnalyse2"
+                                          placeholder="Enter ..."></textarea>
                             </div>
                             <div class="form-group">
                                 <label>难易程度</label>
@@ -704,6 +735,8 @@
                     $("#itemBankChoiceC1").val(ite.itemBankChoiceC);
                     $("#itemBankChoiceD1").val(ite.itemBankChoiceD);
                     $("#itemBankAnswer1").val(ite.itemBankAnswer);
+                    $("#itemBankSubjectImageUrl1").val(ite.itemBankSubjectImageUrl);
+                    $("#itemBankAnswerAnalyse1").val(ite.itemBankAnswerAnalyse);
                     var diffLevel;
                     if(ite.itemBankDifficutLevel==1){
                         diffLevel="易错题";
@@ -780,6 +813,9 @@
                     $("#itemBankDifficutLevel2").val(ite.itemBankDifficutLevel);
                     $("#itemBankKownledgeType2").val(ite.itemBankKownledgeType);
                     $("#itemBankSubjectType2").val(ite.itemBankSubjectType);
+                    $("#itemBankSubjectImageUrl2").val(ite.itemBankSubjectImageUrl);
+                    $("#itemBankAnswerAnalyse2").val(ite.itemBankSubjectImageUrl);
+
 
 
                 })

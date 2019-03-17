@@ -34,7 +34,7 @@ public class ItemBank {
     @Column(name = "ITEM_BANK_ANSWER")
     private String itemBankAnswer;
 
-    @Column(name = "ITEM_BANK_ANSWER_ANALYSE")
+    @Column(name = "ITEM_BANK_ANSWER_ANALYSE",length = 1024)
     private String itemBankAnswerAnalyse;
 
     @Column(name = "ITEM_BANK_KOWNLEDGE_TYPE")
@@ -46,6 +46,8 @@ public class ItemBank {
     @Column(name = "ITEM_BANK_SUBJECT_TYPE")
     private int itemBankSubjectType;
 
+    @Column(name = "ITEM_BANK_IMAGE_URL")
+    private String itemBankSubjectImageUrl;
 
     @Override
     public boolean equals(Object obj) {
@@ -68,4 +70,5 @@ public class ItemBank {
         }
         return false;
     }
+
 }
