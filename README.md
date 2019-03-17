@@ -70,6 +70,9 @@
 | ITEM_BANK_KOWNLEDGE_TYPE | int | 11 | ------| N| 难易程度|
 | ITEM_BANK_DIFFICUT_LEVEL | int | 11 | ------| N| 难易程度|
 | ITEM_BANK_SUBJECT_TYPE | int | 11 | ------| N| 题目类型(选择，判断)|
+| ITEM_BANK_IMAGE_URL | int | 11 | ------| N| 图片URL|
+| ITEM_BANK_ANSWER_ANALYSE | int | 11 | ------| N| 题目解析|
+
 
 - 用户表(TB_USER)
 
@@ -105,3 +108,7 @@
 
 
 ## 说明
+- 可直接运行DriverAdminApplication
+- 其中用户中密码需要经过明文的base64编码
+- 题库可通过内置爬虫获取数据
+  - 启动项目后，访问http://127.0.0.1:8880/spider可激活爬虫程序
