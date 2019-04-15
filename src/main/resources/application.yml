@@ -1,5 +1,7 @@
 server:
   port: 8880
+  tomcat:
+    max-http-header-size: 81920
 logging:
   config: classpath:log4j.xml
   path: logs
@@ -7,7 +9,7 @@ logging:
 spring:
   datasource:
       type: com.alibaba.druid.pool.DruidDataSource
-      url: jdbc:mysql://127.0.0.1:3306/driver_book?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      url: jdbc:mysql://127.0.0.1:3306/driver_book?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username : root
       password : xda265856
       driverClassName : com.mysql.jdbc.Driver

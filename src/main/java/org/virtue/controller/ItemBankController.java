@@ -1,6 +1,8 @@
 package org.virtue.controller;
 
 import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,8 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@Log4j2
 public class ItemBankController {
+    private Logger log = LoggerFactory.getLogger(ItemBankController.class);
     @Autowired
     ItemBankRepository itemBankRepository;
 
@@ -43,14 +45,14 @@ public class ItemBankController {
 
     @RequestMapping(value ="/item-bank-list",method = {RequestMethod.GET})
     public String toItemBanksList(){
-        return "/pages/charts/item_bank_list";
+        return "pages/charts/item_bank_list";
     }
 
     @RequestMapping(value = "/item-bank-add",method = {RequestMethod.GET})
     public String addItemBank(ItemBank itemBank, BindingResult bindingResult){
         ItemBank save = itemBankRepository.save(itemBank);
         log.debug("插入成功");
-        return "/pages/charts/item_bank_list";
+        return "pages/charts/item_bank_list";
     }
 
     @RequestMapping(value="/item-detail",method = {RequestMethod.GET})
@@ -64,13 +66,13 @@ public class ItemBankController {
     public String updateItemBank(ItemBank itemBank,HttpServletRequest request){
         ItemBank save = itemBankRepository.save(itemBank);
         log.debug("更新成功");
-        return "/pages/charts/item_bank_list";
+        return "pages/charts/item_bank_list";
     }
 
     @RequestMapping(value ="/item-delete",method = {RequestMethod.GET})
     public String deleteItemBank(Long itemBankId){
         itemBankRepository.deleteById(itemBankId);
-        return "/pages/charts/item_bank_list";
+        return "pages/charts/item_bank_list";
     }
 
 

@@ -4,9 +4,9 @@ import lombok.extern.log4j.Log4j2;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,15 +14,14 @@ import org.virtue.dao.ItemBankRepository;
 import org.virtue.domain.ItemBank;
 import org.virtue.utils.HtmlParser;
 
-import java.beans.Transient;
 import java.util.Random;
 
 /**
  * 爬虫工具，提供去互联网爬取题库的方法
  */
 @Controller
-@Log4j2
 public class SpiderController {
+    private Logger log = LoggerFactory.getLogger(ItemBankController.class);
     public static  String baseimgUrl = "https://www.jiazhao.com/";
     @Autowired
     ItemBankRepository itemBankRepository;

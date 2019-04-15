@@ -13,5 +13,4 @@ public interface UserRepository extends JpaRepository<DriverUser, Long> {
      List<DriverUser> findUserByusername(String username);
      List<DriverUser> findUserByUsernameAndPassword(String username,String password);
      DriverUser findUserByid(Long id);
-
 }

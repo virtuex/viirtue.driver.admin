@@ -1,4 +1,4 @@
-package org.virtue.dao;
+package org.virtue.domain;
 
 import javax.persistence.*;
 

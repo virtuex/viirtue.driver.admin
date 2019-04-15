@@ -1,19 +1,18 @@
 package org.virtue.controller.api;
 
-import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang3.RandomUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.virtue.basic.result.BizResult;
-import org.virtue.bizexception.BizException;
 import org.virtue.cache.TokenCache;
 import org.virtue.config.ProConfig;
 import org.virtue.constant.ItemType;
 import org.virtue.constant.ResultCode;
+import org.virtue.controller.ItemBankController;
 import org.virtue.dao.CollectRepository;
 import org.virtue.dao.GradeRepository;
 import org.virtue.dao.ItemBankRepository;
@@ -21,15 +20,13 @@ import org.virtue.domain.Grade;
 import org.virtue.domain.ItemBank;
 import org.virtue.domain.MyCollect;
 import org.virtue.utils.JsonFormatter;
-import org.virtue.utils.NumberUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.regex.Pattern;
 
 @Controller
-@Log4j2
 public class ItemBankApiController {
+    private Logger log = LoggerFactory.getLogger(ItemBankController.class);
     @Autowired
     ItemBankRepository itemBankRepository;
     @Autowired
@@ -95,7 +92,7 @@ public class ItemBankApiController {
         bizResult.setRetCode(200);
         bizResult.setMessage("成功");
         bizResult.setData(items);
-        log.debug(items);
+        log.debug(items.toString());
         return bizResult;
     }
 

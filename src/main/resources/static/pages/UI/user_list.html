@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <script src="../../dist/js/common_data.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <script src="../../dist/js/common_data.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -200,7 +200,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./item_bank_list.html" class="nav-link">
+                                <a href="/item-bank-list" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>题库列表</p>
                                 </a>
@@ -238,7 +238,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>题库列表</h1>
+                        <h1>用户列表</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -249,8 +249,6 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        <button class="btn btn-block btn-success btn-sm" href="#modal-table" type="button" data-toggle="modal">新增题目
-        </button>
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -264,13 +262,11 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>题号</th>
-                                    <th>题目</th>
-                                    <th>选项A</th>
-                                    <th>选项B</th>
-                                    <th>选项C</th>
-                                    <th>选项D</th>
-                                    <th>正确答案</th>
+                                    <th>编号</th>
+                                    <th>用户名/手机</th>
+                                    <th>省份</th>
+                                    <th>市</th>
+                                    <th>生日</th>
                                     <th>可选操作</th>
                                 </tr>
                                 </thead>
@@ -311,205 +307,6 @@
         </div>
         <!-- /.content -->
     </div>
-    <!--以下为模态框-->
-    <form role="form" action="/item-bank-add" method="get" id="add_form_value">
-        <div id="modal-table" class="modal fade" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="card card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">题目详情</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>题目描述</label>
-                                <textarea class="form-control" name="itemBankSubject" rows="3" id="itemBankSubject"
-                                          placeholder="Enter ..."></textarea>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">答案A</span>
-                                </div>
-                                <input type="text" name="itemBankChoiceA" class="form-control" placeholder="" id="itemBankChoiceA">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">答案B</span>
-                                </div>
-                                <input type="text" name="itemBankChoiceB"  id="itemBankChoiceB" class="form-control" placeholder="">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">答案C</span>
-                                </div>
-                                <input type="text" name="itemBankChoiceC" id="itemBankChoiceC" class="form-control" placeholder="">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">答案D</span>
-                                </div>
-                                <input type="text" name="itemBankChoiceD" id="itemBankChoiceD" class="form-control" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label>图片地址</label>
-                                <textarea class="form-control" name="itemBankSubjectImageUrl" rows="3" id="itemBankSubjectImageUrl"
-                                          placeholder="Enter ..."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>正确答案</label>
-                                <select class="form-control" name="itemBankAnswer" id="itemBankAnswer">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>答案解析</label>
-                                <textarea class="form-control" name="itemBankAnswerAnalyse" rows="3" id="itemBankAnswerAnalyse"
-                                          placeholder="Enter ..."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>难易程度</label>
-                                <select class="form-control" id="itemBankDifficutLevel" name="itemBankDifficutLevel">
-                                    <option value="1">易错题</option>
-                                    <option value="2">一般题</option>
-                                    <option value="3">简单题</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>知识点</label>
-                                <select class="form-control" id="itemBankKownledgeType" name="itemBankKownledgeType">
-                                    <option value="1">信号</option>
-                                    <option value="2">时间</option>
-                                    <option value="3">罚款</option>
-                                    <option value="4">距离</option>
-                                    <option value="5">速度</option>
-                                    <option value="6">酒驾</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>题目类型</label>
-                                <select class="form-control" id="itemBankSubjectType" name="itemBankSubjectType">
-                                    <option value="1">选择题</option>
-                                    <option value="2">判断题</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-
-
-                    <div class="modal-footer no-margin-top">
-                        <button class="btn btn-sm btn-success" type="submit">
-                                添加
-                        </button>
-                        <button class="btn btn-sm btn-success pull-right" data-dismiss="modal">
-                            <i class="icon-share-alt"></i> 返回
-                        </button>
-
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-    </form>
-
-
-    <!--以下为详情模态框-->
-    <form role="form">
-        <div id="modal-detail-table" class="modal fade" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="card card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">题目详情</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>题目描述</label>
-                                <textarea class="form-control" readonly="readonly" name="itemBankSubject" id="itemBankSubject1" rows="3"
-                                          placeholder="Enter ..."></textarea>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">A</span>
-                                </div>
-                                <input type="text" name="itemBankChoiceA" id="itemBankChoiceA1" readonly="readonly" class="form-control" placeholder="">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">B</span>
-                                </div>
-                                <input type="text" name="itemBankChoiceB" id="itemBankChoiceB1" readonly="readonly" class="form-control" placeholder="">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">C</span>
-                                </div>
-                                <input type="text" name="itemBankChoiceC" id="itemBankChoiceC1" readonly="readonly" class="form-control" placeholder="">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">D</span>
-                                </div>
-                                <input type="text" name="itemBankChoiceD" id="itemBankChoiceD1" readonly="readonly" class="form-control" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label>图片地址</label>
-                                <textarea class="form-control" name="itemBankSubjectImageUrl" rows="3" id="itemBankSubjectImageUrl1"
-                                          placeholder="Enter ..."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>正确答案</label>
-                                <input class="form-control" readonly="readonly" id="itemBankAnswer1" name="itemBankAnswer" >
-                                </input>
-                            </div>
-                            <div class="form-group">
-                                <label>答案解析</label>
-                                <textarea class="form-control" readonly="readonly" name="itemBankAnswerAnalyse" rows="3" id="itemBankAnswerAnalyse1"
-                                          placeholder="Enter ..."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>难易程度</label>
-                                <input class="form-control" readonly="readonly" id="itemBankDifficutLevel1" name="itemBankDifficutLevel">
-                                </input>
-                            </div>
-                            <div class="form-group">
-                                <label>知识点</label>
-                                <input class="form-control" readonly="readonly" id="itemBankKownledgeType1" name="itemBankKownledgeType">
-                                </input>
-                            </div>
-                            <div class="form-group">
-                                <label>题目类型</label>
-                                <input class="form-control" readonly="readonly" id="itemBankSubjectType1" name="itemBankSubjectType">
-                                </input>
-                            </div>
-
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-
-                    <div class="modal-footer no-margin-top">
-                        <button class="btn btn-sm btn-success pull-right" data-dismiss="modal">
-                            <i class="icon-share-alt"></i> 返回
-                        </button>
-
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-    </form>
     <!--更新模态框-->
     <form role="form" method="get" action="item-bank-update">
         <div id="modal-update-table" class="modal fade" tabindex="-1">
@@ -666,9 +463,7 @@
                 return s;
             };
             // 初始化内容
-            var url = getAddress()+'/item/bank/list/1'
-            var btn1 = '<button class="btn btn-block btn-info btn-sm" data-toggle="modal" href="#modal-detail-table" id="{0}" type="button" onclick="show_detail(this)">详情</button>'
-            var btn2 = '<button class="btn btn-block btn-success btn-sm" data-toggle="modal" href="#modal-update-table"   id="{0}" type="button" onclick="show_update(this)">修改</button>'
+            var url = getAddress()+'/user/admin/list//1'
             var btn3 = '<button class="btn btn-block btn-danger btn-sm" id="{0}" onclick="del_item(this)" type="button">删除</button>'
             $.ajax({
                 url: url,
@@ -681,14 +476,12 @@
                     $.each(message, function (i, n) {
                         $('#example_data')
                             .append(' <tr>' +
-                                '                                    <td>' + n.itemBankId + '</td>' +
-                                '                                    <td>' + n.itemBankSubject + '</td>' +
-                                '                                    <td>' + n.itemBankChoiceA + '</td>' +
-                                '                                    <td>' + n.itemBankChoiceB + '</td>' +
-                                '                                    <td>' + n.itemBankChoiceC + '</td>'  +
-                                '                                    <td>' + n.itemBankChoiceD + '</td>' +
-                                '                                    <td>' + n.itemBankAnswer + '</td>' +
-                                '                                    <td>' + btn1.format(n.itemBankId) + btn2.format(n.itemBankId) + btn3.format(n.itemBankId) + '</td>' +
+                                '                                    <td>' + n.id + '</td>' +
+                                '                                    <td>' + n.username + '</td>' +
+                                '                                    <td>' + n.userProvince + '</td>' +
+                                '                                    <td>' + n.city + '</td>' +
+                                '                                    <td>' + n.userBirth + '</td>'  +
+                                '                                    <td>' +  btn3.format(n.id) + '</td>' +
                                 '                                </tr>')
                     })
 
@@ -696,82 +489,6 @@
 
             })
         })
-
-    function show_detail(e) {
-
-        var message = $(e).attr("id");
-
-        var url = "/item-detail?itemBankId="+message;
-        // alert(message);
-
-        //    ajax异步请求数据
-        var htmlobj=$.ajax({url:url,async:false});
-        var data = htmlobj.responseText;
-
-        $.getJSON(
-            url,
-            //处理数据 data指向的是返回来的JSON数据
-            function(data){
-                $(data).each(function(i,ite) {
-
-                    //填充数据
-                    //alert(ite.enterId);
-                    $("#itemBankSubject1").val(ite.itemBankSubject);
-                    $("#itemBankChoiceA1").val(ite.itemBankChoiceA);
-                    $("#itemBankChoiceB1").val(ite.itemBankChoiceB);
-                    $("#itemBankChoiceC1").val(ite.itemBankChoiceC);
-                    $("#itemBankChoiceD1").val(ite.itemBankChoiceD);
-                    $("#itemBankAnswer1").val(ite.itemBankAnswer);
-                    $("#itemBankSubjectImageUrl1").val(ite.itemBankSubjectImageUrl);
-                    $("#itemBankAnswerAnalyse1").val(ite.itemBankAnswerAnalyse);
-                    var diffLevel;
-                    if(ite.itemBankDifficutLevel==1){
-                        diffLevel="易错题";
-                    }
-                    if(ite.itemBankDifficutLevel==2){
-                        diffLevel="一般题"
-                    }
-                    if(ite.itemBankDifficutLevel==3){
-                        diffLevel="简单题"
-                    }
-                    $("#itemBankDifficutLevel1").val(diffLevel);
-                    var knowLedge;
-                    if(ite.itemBankKownledgeType==1){
-                        knowLedge="信号";
-                    }
-                    if(ite.itemBankKownledgeType==2){
-                        knowLedge="时间"
-                    }
-                    if(ite.itemBankKownledgeType==3){
-                        knowLedge="罚款"
-                    }
-                    if(ite.itemBankKownledgeType==4){
-                        knowLedge="距离"
-                    }
-                    if(ite.itemBankKownledgeType==5){
-                        knowLedge="速度"
-                    }
-                    if(ite.itemBankKownledgeType==6){
-                        knowLedge="酒驾"
-                    }
-                    $("#itemBankKownledgeType1").val(knowLedge);
-                    var type;
-                    if(ite.itemBankSubjectType==1){
-                        type="选择题"
-                    }
-                    if(ite.itemBankSubjectType==2){
-                        type="判断题"
-                    }
-                    $("#itemBankSubjectType1").val(type);
-
-
-                })
-
-            }
-        )
-
-    }
-
     function show_update(e) {
 
         var message = $(e).attr("id");
@@ -816,22 +533,8 @@
 
         var message = $(e).attr("id");
 
-        var url = "/item-delete?itemBankId="+message;
+        var url = "/user-delete?itemBankId="+message;
         window.location.href=url;
-        // alert(message);
-        //
-        // //    ajax异步请求数据
-        // var htmlobj=$.ajax({url:url,async:false});
-        // var data = htmlobj.responseText;
-        //
-        // $.getJSON(
-        //     url,
-        //     //处理数据 data指向的是返回来的JSON数据
-        //     function(data){
-        //         alert(data.message);
-        //     }
-        // )
-
     }
     
     function nextPage() {
@@ -845,9 +548,7 @@
             return s;
         };
         // 初始化内容
-        var url = getAddress()+'/item/bank/list/'+nextPage
-        var btn1 = '<button class="btn btn-block btn-info btn-sm" data-toggle="modal" href="#modal-detail-table" id="{0}" type="button" onclick="show_detail(this)">详情</button>'
-        var btn2 = '<button class="btn btn-block btn-success btn-sm" data-toggle="modal" href="#modal-update-table"   id="{0}" type="button" onclick="show_update(this)">修改</button>'
+        var url = getAddress()+'/user/admin/list/'+nextPage
         var btn3 = '<button class="btn btn-block btn-danger btn-sm" id="{0}" onclick="del_item(this)" type="button">删除</button>'
         $.ajax({
             url: url,
@@ -861,14 +562,12 @@
                 $.each(message, function (i, n) {
                     $('#example_data')
                         .append(' <tr>' +
-                            '                                    <td>' + n.itemBankId + '</td>' +
-                            '                                    <td>' + n.itemBankSubject + '</td>' +
-                            '                                    <td>' + n.itemBankChoiceA + '</td>' +
-                            '                                    <td>' + n.itemBankChoiceB + '</td>' +
-                            '                                    <td>' + n.itemBankChoiceC + '</td>'  +
-                            '                                    <td>' + n.itemBankChoiceD + '</td>' +
-                            '                                    <td>' + n.itemBankAnswer + '</td>' +
-                            '                                    <td>' + btn1.format(n.itemBankId) + btn2.format(n.itemBankId) + btn3.format(n.itemBankId) + '</td>' +
+                            '                                    <td>' + n.id + '</td>' +
+                            '                                    <td>' + n.username + '</td>' +
+                            '                                    <td>' + n.province + '</td>' +
+                            '                                    <td>' + n.city + '</td>' +
+                            '                                    <td>' + n.userBirth + '</td>'  +
+                            '                                    <td>' +btn3.format(n.id) + '</td>' +
                             '                                </tr>')
                 })
 
@@ -893,9 +592,7 @@
             return s;
         };
         // 初始化内容
-        var url = getAddress()+'/item/bank/list/'+nextPage
-        var btn1 = '<button class="btn btn-block btn-info btn-sm" data-toggle="modal" href="#modal-detail-table" id="{0}" type="button" onclick="show_detail(this)">详情</button>'
-        var btn2 = '<button class="btn btn-block btn-success btn-sm" data-toggle="modal" href="#modal-update-table"   id="{0}" type="button" onclick="show_update(this)">修改</button>'
+        var url = getAddress()+'/user/admin/list/'+nextPage
         var btn3 = '<button class="btn btn-block btn-danger btn-sm" id="{0}" onclick="del_item(this)" type="button">删除</button>'
         $.ajax({
             url: url,
@@ -909,14 +606,12 @@
                 $.each(message, function (i, n) {
                     $('#example_data')
                         .append(' <tr>' +
-                            '                                    <td>' + n.itemBankId + '</td>' +
-                            '                                    <td>' + n.itemBankSubject + '</td>' +
-                            '                                    <td>' + n.itemBankChoiceA + '</td>' +
-                            '                                    <td>' + n.itemBankChoiceB + '</td>' +
-                            '                                    <td>' + n.itemBankChoiceC + '</td>'  +
-                            '                                    <td>' + n.itemBankChoiceD + '</td>' +
-                            '                                    <td>' + n.itemBankAnswer + '</td>' +
-                            '                                    <td>' + btn1.format(n.itemBankId) + btn2.format(n.itemBankId) + btn3.format(n.itemBankId) + '</td>' +
+                            '                                    <td>' + n.id + '</td>' +
+                            '                                    <td>' + n.username + '</td>' +
+                            '                                    <td>' + n.province + '</td>' +
+                            '                                    <td>' + n.city + '</td>' +
+                            '                                    <td>' + n.userBirth + '</td>'  +
+                            '                                    <td>' + btn3.format(n.id) + '</td>' +
                             '                                </tr>')
                 })
 

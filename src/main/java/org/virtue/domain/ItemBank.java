@@ -6,7 +6,6 @@ import org.omg.CORBA.OBJ_ADAPTER;
 import javax.persistence.*;
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "TB_ITEM_BANK")
 public class ItemBank {
@@ -71,4 +70,100 @@ public class ItemBank {
         return false;
     }
 
+
+    public long getItemBankId() {
+        return itemBankId;
+    }
+
+    public void setItemBankId(long itemBankId) {
+        this.itemBankId = itemBankId;
+    }
+
+    public String getItemBankSubject() {
+        return itemBankSubject;
+    }
+
+    public void setItemBankSubject(String itemBankSubject) {
+        this.itemBankSubject = itemBankSubject;
+    }
+
+    public String getItemBankChoiceA() {
+        return itemBankChoiceA;
+    }
+
+    public void setItemBankChoiceA(String itemBankChoiceA) {
+        this.itemBankChoiceA = itemBankChoiceA;
+    }
+
+    public String getItemBankChoiceB() {
+        return itemBankChoiceB;
+    }
+
+    public void setItemBankChoiceB(String itemBankChoiceB) {
+        this.itemBankChoiceB = itemBankChoiceB;
+    }
+
+    public String getItemBankChoiceC() {
+        return itemBankChoiceC;
+    }
+
+    public void setItemBankChoiceC(String itemBankChoiceC) {
+        this.itemBankChoiceC = itemBankChoiceC;
+    }
+
+    public String getItemBankChoiceD() {
+        return itemBankChoiceD;
+    }
+
+    public void setItemBankChoiceD(String itemBankChoiceD) {
+        this.itemBankChoiceD = itemBankChoiceD;
+    }
+
+    public String getItemBankAnswer() {
+        return itemBankAnswer;
+    }
+
+    public void setItemBankAnswer(String itemBankAnswer) {
+        this.itemBankAnswer = itemBankAnswer;
+    }
+
+    public String getItemBankAnswerAnalyse() {
+        return itemBankAnswerAnalyse;
+    }
+
+    public void setItemBankAnswerAnalyse(String itemBankAnswerAnalyse) {
+        this.itemBankAnswerAnalyse = itemBankAnswerAnalyse;
+    }
+
+    public int getItemBankKownledgeType() {
+        return itemBankKownledgeType;
+    }
+
+    public void setItemBankKownledgeType(int itemBankKownledgeType) {
+        this.itemBankKownledgeType = itemBankKownledgeType;
+    }
+
+    public int getItemBankDifficutLevel() {
+        return itemBankDifficutLevel;
+    }
+
+    public void setItemBankDifficutLevel(int itemBankDifficutLevel) {
+        this.itemBankDifficutLevel = itemBankDifficutLevel;
+    }
+
+    public int getItemBankSubjectType() {
+        return itemBankSubjectType;
+    }
+
+    public void setItemBankSubjectType(int itemBankSubjectType) {
+        this.itemBankSubjectType = itemBankSubjectType;
+    }
+
+    public String getItemBankSubjectImageUrl() {
+        return itemBankSubjectImageUrl;
+    }
+
+    public void setItemBankSubjectImageUrl(String itemBankSubjectImageUrl) {
+        this.itemBankSubjectImageUrl = itemBankSubjectImageUrl;
+    }
 }

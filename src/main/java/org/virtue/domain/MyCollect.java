@@ -7,7 +7,6 @@ import javax.persistence.*;
 /**
  * 收藏表
  */
-@Data
 @Entity
 @Table(name = "TB_COLLECT")
 public class MyCollect {
@@ -20,4 +19,31 @@ public class MyCollect {
     private long itemBankId;
     @Column(name = "COLLECT_USER_ID")
     private long userId;
+
+    public long getCollectId() {
+        return CollectId;
+    }
+
+    public void setCollectId(long collectId) {
+        CollectId = collectId;
+    }
+
+    public long getItemBankId() {
+        return itemBankId;
+    }
+
+    public void setItemBankId(long itemBankId) {
+        this.itemBankId = itemBankId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 }
+
+
+
