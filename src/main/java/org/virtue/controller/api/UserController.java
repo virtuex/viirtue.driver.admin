@@ -37,6 +37,7 @@ public class UserController {
         BizResult result = null;
         //判断用户是否存在
         MessageDigestFactory md5Pass = MessageDigestFactory.getInstance(DigestAlgEnum.MD5.getDigAlgName());
+        //根据有户名和密码查询用户，如果查询到说明存在，登录成功，否则登录失败
         List<DriverUser> users = userRepository.findUserByUsernameAndPassword(username, Base64Coder.encodeString(password));
         //存在
         if (users.size() > 0) {
@@ -61,7 +62,9 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/user/register", method = {RequestMethod.GET, RequestMethod.POST})
     public BizResult userAdd(DriverUser user) throws Exception {
+        //接收到APP传过来的用户信息，并保存到数据库
         String password = user.getPassword();
+        //密码要经过base64保存，不能明文
         String s = Base64Coder.encodeString(password);
         user.setPassword(s);
         userRepository.save(user);

@@ -54,6 +54,7 @@ public class GradeController {
         //考试时间，以2019-05-06 14:23:00的形式保存
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         grade.setDate(format.format(new Date()));
+        //保存成绩
         gradeRepository.save(grade);
         BizResult<Object> success = BizResult.success();
         //200表示正确的响应
