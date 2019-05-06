@@ -532,7 +532,7 @@
     function del_item(e) {
 
         var message = $(e).attr("id");
-
+        alert("确认删除id="+message+"的用户吗？")
         var url = "/user-delete?itemBankId="+message;
         window.location.href=url;
     }

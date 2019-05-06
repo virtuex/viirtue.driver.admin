@@ -81,10 +81,10 @@ public class ItemBankApiController {
         itemDif.addAll(itemKnow);
         itemDif.addAll(itemType);
         Collections.shuffle(itemDif);
-        if(itemDif.size()<20){
+        if(itemDif.size()<100){
             items.addAll(itemDif);
         }else{
-            for(int i=0;i<20;i++){
+            for(int i=0;i<100;i++){
                 items.add(itemDif.get(i));
             }
         }
@@ -134,10 +134,10 @@ public class ItemBankApiController {
         BizResult bizResult = new BizResult();
         bizResult.setRetCode(200);
         bizResult.setMessage("获取题库成功，随机出题");
-        if(all.size()<=20){
+        if(all.size()<=100){
             result.addAll(all);
         }else {
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < 100; i++) {
                 result.add(all.get(i));
             }
         }
@@ -176,8 +176,8 @@ public class ItemBankApiController {
         }
         //如果错题数量多余所以题库，不可能的，就不处理
         if(set.size()>=all.size()){
-            result = all.subList(0,19);
-        }else if(all.size()<21){
+            result = all.subList(0,99);
+        }else if(all.size()<101){
             result.addAll(all);
         }else{
             //错题小于20
@@ -211,10 +211,10 @@ public class ItemBankApiController {
         BizResult bizResult = new BizResult();
         bizResult.setRetCode(200);
         bizResult.setMessage("获取题库成功，全真模拟");
-        if(all.size()<=20){
+        if(all.size()<=100){
             result.addAll(all);
         }else {
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < 100; i++) {
                 result.add(all.get(i));
             }
         }

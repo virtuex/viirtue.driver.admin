@@ -12,5 +12,5 @@ public interface ItemBankRepository extends JpaRepository<ItemBank, Long> {
     List<ItemBank> findItemBankByItemBankSubjectType(Integer type);
     List<ItemBank> findItemBankByItemBankDifficutLevel(Integer type);
     List<ItemBank> findItemBankByItemBankKownledgeType(Integer type);
-
+    List<ItemBank> findItemBanksByItemBankSubjectLike(String keyword);
 }

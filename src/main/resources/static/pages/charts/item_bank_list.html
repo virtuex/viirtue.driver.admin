@@ -249,6 +249,11 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
+        <div>
+            <span>查询：</span>
+            <input id="keyword" placeholder="请输入关键字"/>
+            <button id="search_btn" onclick="search()">查询</button>
+        </div>
         <button class="btn btn-block btn-success btn-sm" href="#modal-table" type="button" data-toggle="modal">新增题目
         </button>
         <!-- Main content -->
@@ -658,6 +663,7 @@
 <script type="text/javascript">
     $(document)
         .ready(function () {
+
             String.prototype.format=function()
             {
                 if(arguments.length==0) return this;
@@ -695,7 +701,55 @@
                 }
 
             })
+
         })
+
+    function search() {
+
+        String.prototype.format=function()
+        {
+            if(arguments.length==0) return this;
+            for(var s=this, i=0; i<arguments.length; i++)
+                s=s.replace(new RegExp("\\{"+i+"\\}","g"), arguments[i]);
+            return s;
+        };
+        // 初始化内容
+        var url = getAddress()+'/item/bank/search'
+        var btn1 = '<button class="btn btn-block btn-info btn-sm" data-toggle="modal" href="#modal-detail-table" id="{0}" type="button" onclick="show_detail(this)">详情</button>'
+        var btn2 = '<button class="btn btn-block btn-success btn-sm" data-toggle="modal" href="#modal-update-table"   id="{0}" type="button" onclick="show_update(this)">修改</button>'
+        var btn3 = '<button class="btn btn-block btn-danger btn-sm" id="{0}" onclick="del_item(this)" type="button">删除</button>'
+        var message = $("#keyword").attr("keyword");
+        $.ajax({
+            url: url,
+            data: {
+                "keyword":message
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                const json_str = jQuery.parseJSON(JSON.stringify(data))
+                var message = json_str.data
+                $.each(message, function (i, n) {
+                    $('#example_data')
+                        .append(' <tr>' +
+                            '                                    <td>' + n.itemBankId + '</td>' +
+                            '                                    <td>' + n.itemBankSubject + '</td>' +
+                            '                                    <td>' + n.itemBankChoiceA + '</td>' +
+                            '                                    <td>' + n.itemBankChoiceB + '</td>' +
+                            '                                    <td>' + n.itemBankChoiceC + '</td>'  +
+                            '                                    <td>' + n.itemBankChoiceD + '</td>' +
+                            '                                    <td>' + n.itemBankAnswer + '</td>' +
+                            '                                    <td>' + btn1.format(n.itemBankId) + btn2.format(n.itemBankId) + btn3.format(n.itemBankId) + '</td>' +
+                            '                                </tr>')
+                })
+
+            }
+
+        })
+
+    }
+
+
 
     function show_detail(e) {
 
@@ -783,7 +837,7 @@
         var htmlobj=$.ajax({url:url,async:false});
         var data = htmlobj.responseText;
         $.getJSON(
-            url,
+                url,
             //处理数据 data指向的是返回来的JSON数据
             function(data){
                 $(data).each(function(i,ite) {

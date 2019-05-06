@@ -76,6 +76,17 @@ public class ItemBankController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = "/item/bank/search",method = {RequestMethod.GET})
+    public BizResult search(@PathVariable String keyword){
+        List<ItemBank> target = itemBankRepository.findItemBanksByItemBankSubjectLike(keyword);
+        BizResult result = BizResult.success();
+        result.setData(target);
+        result.setMessage("请求成功");
+        result.setRetCode(ResultCode.SUCCESS_CODE);
+        log.debug("响应数据:"+JsonFormatter.toPrettyJSON(result));
+        return result;
+    }
 
 
 
