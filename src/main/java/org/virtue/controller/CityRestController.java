@@ -10,7 +10,7 @@ import org.virtue.domain.City;
 import org.virtue.service.CityService;
 
 /**
- * Created by bysocket on 07/02/2017.
+ * 这是个测试接口，本系统中不使用
  */
 @Api("测试接口")
 @RestController

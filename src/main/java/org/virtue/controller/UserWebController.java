@@ -32,14 +32,26 @@ public class UserWebController {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * 这个是用来进入用户列表的HTML页面
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/user/admin/list", method = {RequestMethod.GET, RequestMethod.POST})
     public String doUserLogin() throws Exception {
         return "pages/UI/user_list";
     }
 
+
+    /**
+     * 浏览器发送请求到服务端，服务端根据传过来的页数返回当前页的数据
+     * @param page
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/user/admin/list/{page}", method = {RequestMethod.GET})
     public BizResult userList(@PathVariable Integer page) {
+        //这里和ItemBankController类中的题目列表相同
         int start = (page - 1) * ProConfig.pageSize;
         int end = start + ProConfig.pageSize - 1;
         List<DriverUser> all = userRepository.findAll();
@@ -58,6 +70,11 @@ public class UserWebController {
     }
 
 
+    /**
+     * 删除用户，浏览器发送用户Id,后台根据ID删除掉用户
+     * @param itemBankId
+     * @return
+     */
     @RequestMapping(value = "/user-delete", method = {RequestMethod.GET})
     public String userDelete(long itemBankId) {
         userRepository.deleteById(itemBankId);

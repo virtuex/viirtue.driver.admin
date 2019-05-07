@@ -26,6 +26,9 @@ public class SpiderController {
     @Autowired
     ItemBankRepository itemBankRepository;
 
+    /**
+     * 这个是爬虫类，用来从互联网上爬取题目，省去了每次一个个添加的麻烦。
+     */
     @RequestMapping(value ="/spider",method = {RequestMethod.GET})
     public  void spilder(){
         //爬虫怕的数量不需要太多，够用就行
